@@ -1,0 +1,28 @@
+[project]
+name = "vera-plugin-explitest"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Mohammed Fellaji", email = "fellajimohammed@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "vera-plugin-interface",
+    "explitest",
+    "lime>=0.2.0.1",
+    "numpy>=2.4.2",
+    "onnxruntime>=1.24.4",
+    "pandas>=3.0.1",
+    "scikit-learn>=1.8.0",
+    "scipy>=1.17.0",
+    "shap>=0.49.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.10.12,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+vera-plugin-interface = { git = "https://github.com/lux-ai-factory/a4s-plugin-interface" }
+explitest = { git = "https://github.com/serval-uni-lu/ExpliTest.git", rev = "feature/update-numpy" }
