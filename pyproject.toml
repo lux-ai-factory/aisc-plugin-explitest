@@ -12,7 +12,7 @@ dependencies = [
     "explitest",
     "lime>=0.2.0.1",
     "numpy>=2.4.2",
-    "onnxruntime>=1.24.4",
+    "onnxruntime>=1.24.4,<1.26",
     "pandas>=3.0.1",
     "scikit-learn>=1.8.0",
     "scipy>=1.17.0",
@@ -25,7 +25,13 @@ build-backend = "uv_build"
 
 [tool.uv.sources]
 vera-plugin-interface = { git = "https://github.com/lux-ai-factory/a4s-plugin-interface" }
-explitest = { git = "https://github.com/serval-uni-lu/ExpliTest.git", rev = "feature/update-numpy" }
+explitest = { workspace = true }
+
+[tool.uv.workspace]
+members = [
+    "ExpliTest",
+]
+# explitest = { git = "https://github.com/serval-uni-lu/ExpliTest.git", rev = "feature/update-numpy" }
 
 [dependency-groups]
 dev = [

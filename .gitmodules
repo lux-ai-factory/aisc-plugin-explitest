@@ -1,0 +1,4 @@
+[submodule "ExpliTest"]
+	path = ExpliTest
+	url = git@github.com:serval-uni-lu/ExpliTest.git
+	branch = feature/update-numpy

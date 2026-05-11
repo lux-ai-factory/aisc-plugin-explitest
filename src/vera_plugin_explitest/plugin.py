@@ -1,14 +1,12 @@
 import copy
 from datetime import datetime
 from typing import Any, TypeVar
-from collections.abc import Iterable, Iterator, Sized
 
 from vera_plugin_interface import (
     BaseEvaluationPlugin,
     PluginFeatureFlags,
     evaluation_input,
     InputType,
-    TaskProgress,
     MetricVisualization,
     ChartType,
 )
@@ -220,75 +218,6 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
                 ui_schema["target_feature"] = {"ui:widget": "hidden"}
 
         return form_data, config_schema, ui_schema
-
-    def progress_bar(
-        self,
-        iterable: Iterable[T],
-        *,
-        total: int | None = None,
-        desc: str | None = None,
-        start: int = 1,
-        show_index: bool = False,
-    ) -> Iterator[tuple[int, T] | T]:
-        """Iterate items while emitting progress updates.
-
-        The generator reports progress through ``self.report_progress`` using
-        ``TaskProgress``. By default, it emits an initial event before the first
-        item (``start - 1``) and then emits after each yielded item.
-
-        Args:
-            iterable: Source items to iterate over.
-            total: Total number of items. If omitted, it is inferred from
-                ``iterable`` (materializing it if needed).
-            desc: Optional label included in the progress payload.
-            start: Starting iteration index used by ``enumerate``.
-            show_index: If ``True``, yield ``(index, item)`` tuples. Otherwise,
-                yield items only.
-
-        Yields:
-            Either each item from ``iterable`` or ``(index, item)`` pairs,
-            depending on ``show_index``.
-        """
-        # infer total if not provided
-        if total is None:
-            if isinstance(iterable, Sized):
-                total = len(iterable)
-            else:
-                iterable = list(iterable)
-                total = len(iterable)
-
-        if total == 0:
-            return
-
-        _report_progress = self.report_progress
-
-        def emit(i: int):
-            progress = min(i / total, 1.0)
-            payload: dict = {
-                "iteration": i,
-                "total": total,
-            }
-            if desc:
-                payload["desc"] = desc
-
-            _report_progress(
-                TaskProgress(
-                    progress=progress,
-                    extra=payload,
-                )
-            )
-
-        if start > 0:
-            emit(start - 1)
-        else:
-            start = 0
-
-        for i, item in enumerate(iterable, start=start):
-            if show_index:
-                yield i, item
-            else:
-                yield item
-            emit(i)
 
     def compute_performance(self, x_test, y_true, model, date=None):
         import numpy as np
