@@ -378,10 +378,15 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
         )
 
         # NOTE: only a subset of the test set is considered
+        subset_size = min(
+            max(int(0.0001 * len(y_true)), 100),
+            len(y_true) - len(set(y_true)),
+        )
+
         x_test, _, y_true, _ = train_test_split(
             x_test,
             y_true,
-            train_size=0.0001,
+            train_size=subset_size,
             stratify=y_true,
             random_state=42,
         )
