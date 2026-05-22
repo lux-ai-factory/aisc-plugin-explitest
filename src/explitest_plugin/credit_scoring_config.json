@@ -1,0 +1,218 @@
+{
+  "frequency": "60D",
+  "window_size": "120 days",
+  "target_feature": "charged_off",
+  "date_feature": "issue_d",
+  "features": [
+    {
+      "pid": "bd42c247-a3d8-4d16-a26b-893063a01f1d",
+      "name": "loan_amnt",
+      "min": 1000,
+      "max": 35000,
+      "type": "Float"
+    },
+    {
+      "pid": "f13966b4-c772-43cc-af97-eacd89a0b3c1",
+      "name": "term",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "9b822ffd-b7a3-49bb-98ce-37bdaa4e5cc3",
+      "name": "int_rate",
+      "min": 5.32,
+      "max": 28.99,
+      "type": "Float"
+    },
+    {
+      "pid": "8a180ec1-b89d-44a1-bfee-47cfa6bc8e23",
+      "name": "installment",
+      "min": 4.93,
+      "max": 1445.46,
+      "type": "Float"
+    },
+    {
+      "pid": "e2bd31ad-52ba-4772-97e9-50a9e057898e",
+      "name": "sub_grade",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "c81c548a-ca30-48af-acef-a03a8f45ad05",
+      "name": "emp_length",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "6cd22042-f081-499f-84da-157395dcd923",
+      "name": "home_ownership",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "006c6f99-e020-43a2-8419-7f88b0bf49e8",
+      "name": "annual_inc",
+      "min": 3800,
+      "max": 9500000,
+      "type": "Float"
+    },
+    {
+      "pid": "d6cb0214-9b57-48bb-ad00-cc732a0de1bc",
+      "name": "verification_status",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "6b01fcca-cea6-4cdb-ab29-2e1e35d71f76",
+      "name": "issue_d",
+      "min": 0,
+      "max": 0,
+      "type": "Date"
+    },
+    {
+      "pid": "1c993dee-a12e-4596-80d5-b00cd8c55c5b",
+      "name": "purpose",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "c1103e2e-d084-44a5-a750-4bb1b322240d",
+      "name": "dti",
+      "min": 0,
+      "max": 380.53,
+      "type": "Float"
+    },
+    {
+      "pid": "2ba0a53d-70ca-4f9b-9781-845149b0a686",
+      "name": "open_acc",
+      "min": 1,
+      "max": 90,
+      "type": "Integer"
+    },
+    {
+      "pid": "042fab4c-ee42-4b3d-ad9c-91f4b5671c34",
+      "name": "pub_rec",
+      "min": 0,
+      "max": 86,
+      "type": "Float"
+    },
+    {
+      "pid": "6648984e-3f27-4618-9c37-7d283ee5d611",
+      "name": "revol_bal",
+      "min": 0,
+      "max": 2904836,
+      "type": "Float"
+    },
+    {
+      "pid": "10baac45-df2f-4b9d-a965-e498e5598b4a",
+      "name": "revol_util",
+      "min": 0,
+      "max": 892.3,
+      "type": "Float"
+    },
+    {
+      "pid": "6e596ea5-ae45-4346-8968-5cb7336570d4",
+      "name": "total_acc",
+      "min": 2,
+      "max": 169,
+      "type": "Integer"
+    },
+    {
+      "pid": "9687c224-91d3-4436-9a19-1870095a8c0a",
+      "name": "initial_list_status",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "5834abdb-1007-4181-8ebe-35433dc17763",
+      "name": "application_type",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "ca014416-6173-4067-97d1-28dd3750e358",
+      "name": "mort_acc",
+      "min": 0,
+      "max": 47,
+      "type": "Integer"
+    },
+    {
+      "pid": "f401def0-f2cd-462a-8113-e0ae268fe712",
+      "name": "pub_rec_bankruptcies",
+      "min": 0,
+      "max": 12,
+      "type": "Integer"
+    },
+    {
+      "pid": "eb8f7812-fee1-465e-abde-f2619d31d732",
+      "name": "fico_score",
+      "min": 662,
+      "max": 847.5,
+      "type": "Float"
+    },
+    {
+      "pid": "12b0aa7b-f6f6-4218-9fb4-200428050484",
+      "name": "month_of_year",
+      "min": 0,
+      "max": 0,
+      "type": "Categorical"
+    },
+    {
+      "pid": "16009eef-6239-4a3a-b071-8e1c9d92381f",
+      "name": "ratio_loan_amnt_annual_inc",
+      "min": 0.000309009454428,
+      "max": 3.8,
+      "type": "Float"
+    },
+    {
+      "pid": "fb842e72-eea1-429b-adec-0c63c27c6ad3",
+      "name": "ratio_open_acc_total_acc",
+      "min": 0.0384615384615384,
+      "max": 1,
+      "type": "Float"
+    },
+    {
+      "pid": "3028a073-b09b-48f9-8306-4737ffbebf88",
+      "name": "month_since_earliest_cr_line",
+      "min": 36,
+      "max": 852,
+      "type": "Integer"
+    },
+    {
+      "pid": "d9fbc9c7-6a48-4956-a816-778733a7372a",
+      "name": "ratio_pub_rec_month_since_earliest_cr_line",
+      "min": 0,
+      "max": 0.2567164179104477,
+      "type": "Float"
+    },
+    {
+      "pid": "69cab00f-3d8e-4b0e-a411-d187974b59d0",
+      "name": "ratio_pub_rec_bankruptcies_month_since_earliest_cr_line",
+      "min": 0,
+      "max": 0.0909090909090909,
+      "type": "Float"
+    },
+    {
+      "pid": "61187fb8-02c4-46ed-ac6a-bd6385ffa6ed",
+      "name": "ratio_pub_rec_bankruptcies_pub_rec",
+      "min": -1,
+      "max": 1,
+      "type": "Float"
+    },
+    {
+      "pid": "09d2e21a-2d63-468f-9968-23fc3d8c7aa5",
+      "name": "charged_off",
+      "min": 0,
+      "max": 1,
+      "type": "Integer"
+    }
+  ]
+}

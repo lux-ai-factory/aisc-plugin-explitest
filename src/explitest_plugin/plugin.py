@@ -1,4 +1,6 @@
 import copy
+import json
+from pathlib import Path
 from datetime import datetime
 from typing import Any, TypeVar
 
@@ -17,6 +19,10 @@ from .data_input_provider import DataFrameProvider, dataframe_iter
 from .model_input_provider import OnnxInputProvider, OnnxModelSession
 
 T = TypeVar("T")
+
+DEFAULT_CONFIG = (
+    Path(__file__).parent.resolve().absolute() / "credit_scoring_config.json"
+)
 
 
 @add_metrics
@@ -148,6 +154,19 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
             )
 
         self.logger.info("Parsed %d features from dataset", len(config.features))
+
+        # Use the default config only if all its feature names are present in the dataset
+        try:
+            with open(DEFAULT_CONFIG, "r") as f:
+                data = json.load(f)
+            default_form = ConfigForm(**data)
+            default_feature_names = {f.name for f in default_form.features}
+            if default_feature_names.issubset({f.name for f in config.features}):
+                self.logger.info("Default config matches dataset, using it")
+                return default_form.model_dump()
+        except Exception:
+            pass
+
         return config.model_dump()
 
     def on_config_change(
@@ -359,10 +378,15 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
         )
 
         # NOTE: only a subset of the test set is considered
+        subset_size = min(
+            max(int(0.0001 * len(y_true)), 100),
+            len(y_true) - len(set(y_true)),
+        )
+
         x_test, _, y_true, _ = train_test_split(
             x_test,
             y_true,
-            train_size=0.0001,
+            train_size=subset_size,
             stratify=y_true,
             random_state=42,
         )
