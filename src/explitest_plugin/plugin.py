@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Any, TypeVar
 
-from vera_plugin_interface import (
+from aisc_plugin_interface import (
     BaseEvaluationPlugin,
     PluginFeatureFlags,
     evaluation_input,

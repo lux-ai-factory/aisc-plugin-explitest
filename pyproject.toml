@@ -1,6 +1,6 @@
 [project]
 name = "explitest-plugin"
-version = "0.2.0"
+version = "0.2.1"
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -8,7 +8,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "vera-plugin-interface",
+    "aisc-plugin-interface>=0.2.5",
     "explitest",
     "lime>=0.2.0.1",
     "numpy>=2.4.2",
@@ -24,7 +24,6 @@ requires = ["uv_build>=0.10.12,<0.11.0"]
 build-backend = "uv_build"
 
 [tool.uv.sources]
-vera-plugin-interface = { git = "https://github.com/lux-ai-factory/a4s-plugin-interface" }
 explitest = { workspace = true }
 
 [tool.uv.workspace]
