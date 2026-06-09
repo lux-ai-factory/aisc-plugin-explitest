@@ -213,7 +213,7 @@ src/explitest_plugin/
 | Verification type | Technical test |
 | Project | [aisc-plugin-explitest](https://github.com/lux-ai-factory/aisc-plugin-explitest) |
 | Branch | main |
-| Version | 0.2.1 |
+| Version | 0.2.2 |
 | Project maturity | Deployed |
 | Scientific reference | [ExpliTest](https://github.com/serval-uni-lu/ExpliTest) |
 | Verification targets | [Explainability] [XAI Evaluation] [Trustworthiness] |
