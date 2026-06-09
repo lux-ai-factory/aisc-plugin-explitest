@@ -4,7 +4,11 @@ version = "0.2.1"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Mohammed Fellaji", email = "fellajimohammed@gmail.com" }
+    { name = "Mohammed Fellaji", email = "fellajimohammed@gmail.com" },
+    { name = "Yu-Lin Huang", email = "yu-lin.huang@uni.lu" },
+    { name = "Kaouther Benguessoum", email = "kaouther.benguessoum@uni.lu"},
+    { name = "Raoni Lourenco", email = "raoni.lourenco@uni.lu" },
+     
 ]
 requires-python = ">=3.12"
 dependencies = [
@@ -24,13 +28,7 @@ requires = ["uv_build>=0.10.12,<0.11.0"]
 build-backend = "uv_build"
 
 [tool.uv.sources]
-explitest = { workspace = true }
-
-[tool.uv.workspace]
-members = [
-    "ExpliTest",
-]
-# explitest = { git = "https://github.com/serval-uni-lu/ExpliTest.git", rev = "feature/update-numpy" }
+explitest = { git = "https://github.com/serval-uni-lu/ExpliTest.git", rev = "0b890752307845f524b616e43f9febf7017391c8" }
 
 [dependency-groups]
 dev = [
