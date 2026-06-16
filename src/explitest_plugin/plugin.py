@@ -199,13 +199,23 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
             if possible_date_features:
                 # NOTE: adding an empty string will force the user to make a choice
                 possible_date_features.insert(0, "")
-                config_schema["properties"]["date_feature"]["enum"] = (
-                    possible_date_features
-                )
-                default_date = (
-                    possible_date_features[0] if possible_date_features else None
-                )
-                config_schema["properties"]["date_feature"]["default"] = default_date
+                config_schema["properties"]["date_feature"] = {
+                    "title": "Date Feature",
+                    "type": "string",
+                    "enum": possible_date_features,
+                    "default": possible_date_features[0],
+                }
+                if isinstance(form_data, ConfigForm):
+                    if form_data.date_feature is None:
+                        form_data = form_data.model_copy(
+                            update={"date_feature": possible_date_features[0]}
+                        )
+                elif isinstance(form_data, dict):
+                    if form_data.get("date_feature") is None:
+                        form_data = {
+                            **form_data,
+                            "date_feature": possible_date_features[0],
+                        }
             else:
                 ui_schema["date_feature"] = {"ui:widget": "hidden"}
                 ui_schema["frequency"] = {"ui:widget": "hidden"}
@@ -224,15 +234,23 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
             if possible_target_features:
                 # NOTE: adding an empty string will force the user to make a choice
                 possible_target_features.insert(0, "")
-                config_schema["properties"]["target_feature"]["enum"] = (
-                    possible_target_features
-                )
-                default_target = (
-                    possible_target_features[-1] if possible_target_features else None
-                )
-                config_schema["properties"]["target_feature"]["default"] = (
-                    default_target
-                )
+                config_schema["properties"]["target_feature"] = {
+                    "title": "Target Feature",
+                    "type": "string",
+                    "enum": possible_target_features,
+                    "default": possible_target_features[-1],
+                }
+                if isinstance(form_data, ConfigForm):
+                    if form_data.target_feature is None:
+                        form_data = form_data.model_copy(
+                            update={"target_feature": possible_target_features[-1]}
+                        )
+                elif isinstance(form_data, dict):
+                    if form_data.get("target_feature") is None:
+                        form_data = {
+                            **form_data,
+                            "target_feature": possible_target_features[-1],
+                        }
             else:
                 ui_schema["target_feature"] = {"ui:widget": "hidden"}
 
