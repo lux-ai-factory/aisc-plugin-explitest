@@ -75,7 +75,7 @@ def add_metrics(cls: type[T]) -> type[T]:
                     name=_name,
                     score=float(score),
                     time=measure.get("time", datetime.now()),
-                    description=measure.get("description"),
+                    dimensions=measure.get("dimensions", {}),
                 )
                 for measure in measures
                 if (score := measure["score"]) is not None

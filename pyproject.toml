@@ -12,7 +12,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "aisc-plugin-interface>=0.2.5",
+    "aisc-plugin-interface>=0.2.6",
     "explitest",
     "lime>=0.2.0.1",
     "numpy>=2.4.2",
