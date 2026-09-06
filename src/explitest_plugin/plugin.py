@@ -432,6 +432,8 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
         return [
             MetricVisualization(
                 chart_type=ChartType.RADAR,
+                title="Explainability Metrics",
+                description="Explainability metrics for each explainer.",
                 metrics=self.xai_metric_names,
                 group_by_dimensions=["explainer"],
             ),
