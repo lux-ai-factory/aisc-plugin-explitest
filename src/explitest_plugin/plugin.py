@@ -264,14 +264,14 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
             date = datetime.now()
 
         y_pred = np.argmax(model.predict(x_test, probabilities=True), axis=1)
-        per_score = f1_score(y_true, y_pred, zero_division=0)
+        per_score = f1_score(y_true, y_pred, zero_division=0, average="weighted")
 
         return [
             {
                 "Performance": {
                     "score": per_score,
                     "time": date,
-                    "description": explainer,
+                    "dimensions": {"explainer": explainer},
                 }
             }
             for explainer in self.explainer_names
@@ -336,7 +336,13 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
         for row in values:
             explainer = row.pop("explainer", None)
             metrics.extend(
-                {metric_name: {"score": score, "description": explainer, "time": date}}
+                {
+                    metric_name: {
+                        "score": score,
+                        "time": date,
+                        "dimensions": {"explainer": explainer},
+                    }
+                }
                 for metric_name, score in row.items()
                 if explainer in self.explainer_names
             )
@@ -426,6 +432,9 @@ class ExpliTestPlugin(BaseEvaluationPlugin[ConfigForm]):
         return [
             MetricVisualization(
                 chart_type=ChartType.RADAR,
+                title="Explainability Metrics",
+                description="Explainability metrics for each explainer.",
                 metrics=self.xai_metric_names,
+                group_by_dimensions=["explainer"],
             ),
         ]
